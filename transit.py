@@ -2,7 +2,7 @@ import requests
 import urllib
 import xml.etree.ElementTree as ET
 from operator import itemgetter
-# import xmltodict
+from datetime import datetime, timedelta
 
 TOKEN = "10f777df-2175-4dfb-9b7a-69aaa066e91a"
 STOPCODE_NB_22ND_ST = '70021'
@@ -47,13 +47,17 @@ class Route():
             selected_arrival = 100
 
         home_time_in_mins = selected_arrival + self.travel_time + self.from_time
-        return self.name, home_time_in_mins, selected_arrival
-        # home_time_in_datetime = datetime.datetime.now() + home_time_in_mins #(or maybe do this elsewhere?)
 
-        # return {
-        #     'home_time': home_time_in_datetime,
-        #     'arrival_time': selected_arrival
-        #     }
+        now = datetime.now()
+        home_time_in_datetime = now + timedelta(minutes=home_time_in_mins)
+
+        # import ipdb
+        # ipdb.set_trace()
+
+        return {'name': self.name,
+                'home_time_in_mins': home_time_in_mins,
+                'arrival_in_min': selected_arrival,
+                'home_time': home_time_in_datetime.strftime('%I:%M')}
 
 
 def initiate_routes():
@@ -101,7 +105,7 @@ def get_times():
         else:
             home_times.append(route.calculate_arrival(station_4th))
 
-    home_times = sorted(home_times, key=itemgetter(1))
+    home_times = sorted(home_times, key=itemgetter('home_time_in_mins'))
 
     return home_times, station_22nd
 

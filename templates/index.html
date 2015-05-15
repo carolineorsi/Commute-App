@@ -4,7 +4,7 @@
 
         <style>
             .transit-option {
-                max-width: 200px;
+                max-width: 250px;
                 border: 1px solid;
                 margin: 10px;
             }
@@ -32,9 +32,9 @@
         {% for option in options %}
             <div class='transit-option'>
                 <ul>
-                    <li><span class='route-name'>Route: {{ option[0] }}</span></li>
-                    <li>Arrival time: {{ option[2] }} min</li>
-                    <li>Time to home: {{ option[1] }} min</li>
+                    <li><span class='route-name'>Route: {{ option.name }}</span></li>
+                    <li>Arrival time: {{ option.arrival_in_min }} min</li>
+                    <li>Time to home: {{ option.home_time }} ({{ option.home_time_in_mins }} mins)</li>
                 </ul>
             </div>
         {% endfor %}
