@@ -5,8 +5,8 @@ from operator import itemgetter
 # import xmltodict
 
 TOKEN = "10f777df-2175-4dfb-9b7a-69aaa066e91a"
-# STOPCODE_NB_22ND_ST = '70021'
-STOPCODE_NB_22ND_ST = '15203'
+STOPCODE_NB_22ND_ST = '70021'
+# STOPCODE_NB_22ND_ST = '15203'
 
 
 class Route():
@@ -82,7 +82,7 @@ def get_caltrain_arrival(stop):
     departures.sort()
 
     if not departures:
-        departures.append(1000)
+        departures.append(0)
 
     return departures[0]
 
