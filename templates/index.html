@@ -27,12 +27,14 @@
     </head>
     <body>
 
+        <h3>Caltrain Arrival to 22nd St: {{ caltrain_arrival }} min</h3>
+
         {% for option in options %}
             <div class='transit-option'>
                 <ul>
                     <li><span class='route-name'>Route: {{ option[0] }}</span></li>
-                    <li>Arrival time: {{ option [2] }}</li>
-                    <li>Time to home: {{ option[1] }}</li>
+                    <li>Arrival time: {{ option[2] }} min</li>
+                    <li>Time to home: {{ option[1] }} min</li>
                 </ul>
             </div>
         {% endfor %}

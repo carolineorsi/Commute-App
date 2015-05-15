@@ -9,10 +9,11 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 @app.route('/')
 def index():
-    options = transit.get_times()
+    options, caltrain_arrival = transit.get_times()
 
     return render_template('index.html',
-                           options=options)
+                           options=options,
+                           caltrain_arrival=caltrain_arrival)
 
 
 if __name__ == '__main__':

@@ -103,7 +103,7 @@ def get_times():
 
     home_times = sorted(home_times, key=itemgetter(1))
 
-    return home_times
+    return home_times, station_22nd
 
 
 if __name__ == '__main__':
