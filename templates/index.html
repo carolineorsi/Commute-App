@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Routes</title>
+
+        <style>
+            .transit-option {
+                max-width: 200px;
+                border: 1px solid;
+                margin: 10px;
+            }
+
+            .route-name {
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            ul {
+                padding: 20px;
+                margin: 0;
+            }
+
+            li {
+                list-style: none outside none;
+            }
+        </style>
+
+    </head>
+    <body>
+
+        {% for option in options %}
+            <div class='transit-option'>
+                <ul>
+                    <li><span class='route-name'>Route: {{ option[0] }}</span></li>
+                    <li>Arrival time: {{ option [2] }}</li>
+                    <li>Time to home: {{ option[1] }}</li>
+                </ul>
+            </div>
+        {% endfor %}
+        
+    </body>
+</html>
