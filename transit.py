@@ -81,6 +81,9 @@ def get_caltrain_arrival(stop):
 
     departures.sort()
 
+    if not departures:
+        departures.append(1000)
+
     return departures[0]
 
 
