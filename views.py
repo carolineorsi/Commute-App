@@ -7,9 +7,21 @@ SECRET_KEY = os.environ.get('FLASK_SECRET_KEY', "abcdefg")
 app = Flask(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY
 
+
 @app.route('/')
 def index():
     options, caltrain_arrival = transit.get_times()
+
+    return render_template('index.html',
+                           options=options,
+                           caltrain_arrival=caltrain_arrival)
+
+
+@app.route('/override')
+def override():
+    station_22nd = int(request.args.get('station_22nd'))
+
+    options, caltrain_arrival = transit.get_times(station_22nd)
 
     return render_template('index.html',
                            options=options,

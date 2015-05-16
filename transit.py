@@ -70,7 +70,7 @@ def initiate_routes():
     return routes
 
 
-def get_caltrain_arrival(stop):
+def get_caltrain_arrival(stop, caltrain_time=None):
     params = urllib.urlencode({
         'token': TOKEN,
         'stopcode': stop})
@@ -91,10 +91,12 @@ def get_caltrain_arrival(stop):
     return departures[0]
 
 
-def get_times():
+def get_times(station_22nd=None):
     routes = initiate_routes()
 
-    station_22nd = get_caltrain_arrival(STOPCODE_NB_22ND_ST)
+    if not station_22nd:
+        station_22nd = get_caltrain_arrival(STOPCODE_NB_22ND_ST)
+    
     station_4th = station_22nd + 7 # Add seven minutes to arrival time, since can't look up 4th st departure times
 
     home_times = []

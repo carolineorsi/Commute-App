@@ -27,7 +27,14 @@
     </head>
     <body>
 
-        <h3>Caltrain Arrival to 22nd St: {{ caltrain_arrival }} min</h3>
+        <div>
+            <h3>Caltrain Arrival to 22nd St: {{ caltrain_arrival }} min</h3>
+            <form action='/override'>
+                <label for='station_22nd'>Override arrival time: </label>
+                <input type='text' id='station_22nd' name='station_22nd' placeholder='Estimated arrival in min'></input>
+                <button type='submit'>Submit</button>
+            </form>
+        </div>
 
         {% for option in options %}
             <div class='transit-option'>
