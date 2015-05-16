@@ -7,7 +7,6 @@ import pytz
 
 TOKEN = "10f777df-2175-4dfb-9b7a-69aaa066e91a"
 STOPCODE_NB_22ND_ST = '70021'
-# STOPCODE_NB_22ND_ST = '15203'
 
 
 class Route():
@@ -53,13 +52,11 @@ class Route():
         now = datetime.now(tz)
         home_time_in_datetime = now + timedelta(minutes=home_time_in_mins)
 
-        # import ipdb
-        # ipdb.set_trace()
-
         return {'name': self.name,
                 'home_time_in_mins': home_time_in_mins,
                 'arrival_in_min': selected_arrival,
-                'home_time': home_time_in_datetime.strftime('%I:%M')}
+                'all_arrivals': self.arrivals,
+                'home_time': home_time_in_datetime.strftime('%I:%M %p')}
 
 
 def initiate_routes():

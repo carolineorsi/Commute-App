@@ -4,7 +4,7 @@
 
         <style>
             .transit-option {
-                max-width: 250px;
+                max-width: 300px;
                 border: 1px solid;
                 margin: 10px;
             }
@@ -12,6 +12,10 @@
             .route-name {
                 font-size: 20px;
                 font-weight: bold;
+            }
+
+            .selected_arrival {
+                color: red;
             }
 
             ul {
@@ -40,7 +44,16 @@
             <div class='transit-option'>
                 <ul>
                     <li><span class='route-name'>Route: {{ option.name }}</span></li>
-                    <li>Arrival time: {{ option.arrival_in_min }} min</li>
+                    <li>Route arrivals: 
+                        {% for arrival in option.all_arrivals %}
+                            {%- if arrival == option.arrival_in_min -%}
+                                <span class="selected_arrival">{{ arrival }}</span>
+                            {%- else -%}
+                                {{ arrival }}
+                            {%- endif -%}
+                            {%- if not loop.last -%},{% endif %}
+                        {% endfor %}
+                    min</li>
                     <li>Time of arrival: {{ option.home_time }} ({{ option.home_time_in_mins }} mins)</li>
                 </ul>
             </div>
