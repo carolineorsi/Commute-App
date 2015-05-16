@@ -3,6 +3,7 @@ import urllib
 import xml.etree.ElementTree as ET
 from operator import itemgetter
 from datetime import datetime, timedelta
+import pytz
 
 TOKEN = "10f777df-2175-4dfb-9b7a-69aaa066e91a"
 STOPCODE_NB_22ND_ST = '70021'
@@ -48,7 +49,8 @@ class Route():
 
         home_time_in_mins = selected_arrival + self.travel_time + self.from_time
 
-        now = datetime.now()
+        tz = pytz.timezone('America/Los_Angeles')
+        now = datetime.now(tz)
         home_time_in_datetime = now + timedelta(minutes=home_time_in_mins)
 
         # import ipdb
