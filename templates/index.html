@@ -18,6 +18,14 @@
                 color: red;
             }
 
+            .caltrain {
+                margin: 10px;
+            }
+
+            .caltrain h3 {
+                margin: 0px;
+            }
+
             ul {
                 padding: 20px;
                 margin: 0;
@@ -31,11 +39,11 @@
     </head>
     <body>
 
-        <div>
+        <div class='caltrain'>
             <h3>Caltrain Arrival to 22nd St: {{ caltrain_arrival }} min</h3>
             <form action='/override'>
                 <label for='station_22nd'>Override arrival time: </label>
-                <input type='text' id='station_22nd' name='station_22nd' placeholder='Estimated arrival in min'></input>
+                <input type='number' id='station_22nd' name='station_22nd' placeholder='Minutes to arrival' required></input>
                 <button type='submit'>Submit</button>
             </form>
         </div>
